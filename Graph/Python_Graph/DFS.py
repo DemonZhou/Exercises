@@ -26,8 +26,7 @@ def TopoLogical_Sort(graph):
     vlist = []
     topolist = []
     for v in graph.keys():
-        if v not in vlist:
-            DFS_Sort(graph, v, vlist, topolist)
+        DFS_Sort(graph, v, vlist, topolist)
     return topolist
 
 
@@ -41,4 +40,4 @@ graph = {
 }
 
 #DFS(graph)
-#print TopoLogical_Sort(graph)
+print TopoLogical_Sort(graph)
