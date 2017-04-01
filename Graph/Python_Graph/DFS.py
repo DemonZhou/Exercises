@@ -1,32 +1,33 @@
 # -*- coding: utf-8 -*-
 def DFS_Visit(graph, u, vlist):
-    vlist.add(u)
+    if u in vlist:
+        return
+    vlist.append(u)
     for v in graph[u]:
-        if not v in vlist:
-            DFS_Visit(graph, v, vlist)
-
+        DFS_Visit(graph, v, vlist)
 
 def DFS_Sort(graph, u, vlist, L):
-    vlist.add(u)
+    if u in vlist:
+        return 
+    vlist.append(u)
     for v in graph[u]:
-        if not v in vlist:
-            DFS_Sort(graph, v, vlist, L)
-    if u not in L:
-        L.append(u)
+        DFS_Sort(graph, v, vlist, L)
+    L.append(u)
 
 
 def DFS(graph):
-    vlist = set()
+    vlist = []
     for v in graph.keys():
         DFS_Visit(graph, v, vlist)
         print vlist
 
 
 def TopoLogical_Sort(graph):
-    vlist = set()
+    vlist = []
     topolist = []
     for v in graph.keys():
-        DFS_Sort(graph, v, vlist, topolist)
+        if v not in vlist:
+            DFS_Sort(graph, v, vlist, topolist)
     return topolist
 
 
@@ -39,5 +40,5 @@ graph = {
     6: []
 }
 
-# DFS(graph)
-print TopoLogical_Sort(graph)
+#DFS(graph)
+#print TopoLogical_Sort(graph)
