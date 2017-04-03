@@ -12,7 +12,7 @@ def DFS_Sort(graph, u, vlist, L):
     vlist.append(u)
     for v in graph[u]:
         DFS_Sort(graph, v, vlist, L)
-    L.insert(0,u)
+    L.insert(0,u) #insert it onto the front of a linked list
 
 
 def DFS(graph):
